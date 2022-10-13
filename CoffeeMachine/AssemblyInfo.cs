@@ -2,3 +2,4 @@
 
 // Make this assembly internal entities visible to the specified assembly.
 [assembly: InternalsVisibleTo("Test-CoffeeMachine")]
+[assembly: InternalsVisibleTo("Test-CoffeeMachine-Extensibility")]
