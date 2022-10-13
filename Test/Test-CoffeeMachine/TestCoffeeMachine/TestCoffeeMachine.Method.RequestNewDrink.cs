@@ -44,4 +44,14 @@ internal partial class TestCoffeeMachine
         Assert.Throws<ArgumentException>(() => CoffeeMachine.RequestNewDrink(InvalidSelection3));
         Assert.Throws<ArgumentException>(() => CoffeeMachine.RequestNewDrink(InvalidSelection4));
     }
+
+    [Test]
+    public void TestMethodRequestNewDrinkButBusy()
+    {
+        BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
+
+        CoffeeMachine.RequestNewDrink(0);
+
+        Assert.Throws<InvalidOperationException>(() => CoffeeMachine.RequestNewDrink(0));
+    }
 }
