@@ -1,6 +1,5 @@
 ﻿namespace CoffeeMachine;
 
-using System;
 using System.Collections.Generic;
 
 /// <summary>
@@ -24,7 +23,26 @@ public class BasicCoffeeMachine : ICoffeeMachine
     protected BasicCoffeeMachine()
     {
         LastSelection = ICoffeeMachine.InvalidSelection;
-        RecipeList = new List<IRecipe>().AsReadOnly();
+        InternalRecipeList = new();
+        RecipeList = InitializedListOfSupportedRecipes();
+    }
+
+    // Create the default list of supported recipes.
+    private IReadOnlyList<IRecipe> InitializedListOfSupportedRecipes()
+    {
+        List<IRecipe> DefaultRecipeList = new()
+        {
+            BasicRecipe.Expresso,
+            BasicRecipe.LongCoffee,
+            BasicRecipe.Cappucino,
+            BasicRecipe.Chocolate,
+            BasicRecipe.Tea,
+        };
+
+        // Add default recipes.
+        InternalRecipeList.AddRange(DefaultRecipeList);
+
+        return InternalRecipeList.AsReadOnly();
     }
     #endregion
 
@@ -65,5 +83,12 @@ public class BasicCoffeeMachine : ICoffeeMachine
     public void WithdrawLastDrink()
     {
     }
+    #endregion
+
+    #region Descendant Interface
+    /// <summary>
+    /// Gets the internal list of recipes. This list can be extended by descendants.
+    /// </summary>
+    protected List<IRecipe> InternalRecipeList { get; }
     #endregion
 }
