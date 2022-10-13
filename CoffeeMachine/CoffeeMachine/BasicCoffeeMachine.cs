@@ -2,12 +2,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Represents a coffee machine that distributes drinks.
 /// </summary>
-public class BasicCoffeeMachine : ICoffeeMachine
+public class BasicCoffeeMachine : ICoffeeMachine, INotifyPropertyChanged
 {
     #region Init
     /// <summary>
@@ -134,7 +136,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// Checks whether a selection is valid. This method does not throw an exception.
     /// </summary>
     /// <param name="selectedRecipe">The selected recipe.</param>
-    /// <returns>True if valid; otherwise, false.</returns>
+    /// <returns><see langword="true"/> if valid; otherwise, <see langword="false"/>.</returns>
     protected virtual bool IsSelectionValid(Selection selectedRecipe)
     {
         return selectedRecipe >= 0 && selectedRecipe < DrinkList.Count;
@@ -229,5 +231,19 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// Gets or sets the internal cost multiplier.
     /// </summary>
     protected double InternalCostMultiplier { get; set; }
+    #endregion
+
+    #region Implementation of INotifyPropertyChanged
+    /// <summary>
+    /// Implements the PropertyChanged event.
+    /// </summary>
+#nullable disable annotations
+    public event PropertyChangedEventHandler PropertyChanged;
+#nullable restore annotations
+
+    internal void NotifyThisPropertyChanged([CallerMemberName] string propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
     #endregion
 }

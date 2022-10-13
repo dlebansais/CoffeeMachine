@@ -1,11 +1,13 @@
 ﻿namespace CoffeeMachine;
 
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Represents a drink with a price.
 /// </summary>
-public record SelectableDrink
+public record SelectableDrink : INotifyPropertyChanged
 {
     #region Init
     /// <summary>
@@ -57,6 +59,20 @@ public record SelectableDrink
     {
         if (double.IsNaN(costMultiplier))
             throw new ArgumentException("Invalid cost multiplier.", paramName);
+    }
+    #endregion
+
+    #region Implementation of INotifyPropertyChanged
+    /// <summary>
+    /// Implements the PropertyChanged event.
+    /// </summary>
+#nullable disable annotations
+    public event PropertyChangedEventHandler PropertyChanged;
+#nullable restore annotations
+
+    internal void NotifyPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     #endregion
 }
