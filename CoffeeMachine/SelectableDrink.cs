@@ -51,6 +51,7 @@ public record SelectableDrink : INotifyPropertyChanged
         ValidateCostMultiplier(newCostMultiplier, nameof(newCostMultiplier));
 
         Price = Recipe.TotalCost * newCostMultiplier;
+        NotifyPropertyChanged(nameof(Price));
     }
     #endregion
 

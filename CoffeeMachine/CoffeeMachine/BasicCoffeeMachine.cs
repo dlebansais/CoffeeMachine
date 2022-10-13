@@ -72,6 +72,7 @@ public class BasicCoffeeMachine : ICoffeeMachine, INotifyPropertyChanged
             {
                 InternalCostMultiplier = value;
                 UpdateDrinkPrices();
+                NotifyThisPropertyChanged();
             }
         }
     }
