@@ -10,7 +10,7 @@ internal partial class TestDose
     [Test]
     public void TestCreateNewInstance()
     {
-        IIngredient TestIngredient = new BasicIngredient("No name", 0);
+        IIngredient TestIngredient = BasicIngredient.Coffee;
         Dose NewInstance = new(TestIngredient);
 
         Assert.That(NewInstance.Ingredient, Is.EqualTo(TestIngredient));
@@ -20,7 +20,7 @@ internal partial class TestDose
     [Test]
     public void TestCreateNewInstanceWithMinimalQuantity()
     {
-        IIngredient TestIngredient = new BasicIngredient("No name", 0);
+        IIngredient TestIngredient = BasicIngredient.Coffee;
         int TestQuantity = 1;
         Dose NewInstance = new(TestIngredient, TestQuantity);
 
@@ -31,7 +31,7 @@ internal partial class TestDose
     [Test]
     public void TestCreateNewInstanceWithLargeQuantity()
     {
-        IIngredient TestIngredient = new BasicIngredient("No name", 0);
+        IIngredient TestIngredient = BasicIngredient.Coffee;
         int TestQuantity = int.MaxValue;
         Dose NewInstance = new(TestIngredient, TestQuantity);
 
@@ -52,7 +52,7 @@ internal partial class TestDose
     [Test]
     public void TestInvalidQuantity()
     {
-        IIngredient TestIngredient = new BasicIngredient("No name", 0);
+        IIngredient TestIngredient = BasicIngredient.Coffee;
         int TestQuantityInvalid1 = 0;
         int TestQuantityInvalid2 = -1;
         int TestQuantityInvalid3 = int.MinValue;

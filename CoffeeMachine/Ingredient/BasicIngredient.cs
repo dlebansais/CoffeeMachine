@@ -50,7 +50,7 @@ internal class BasicIngredient : IIngredient
     /// </summary>
     /// <param name="name">The ingredient name. The name must not empty or just blank.</param>
     /// <param name="cost">The ingredient cost. The cost must be a positive value or zero.</param>
-    public BasicIngredient(string name, double cost)
+    protected BasicIngredient(string name, double cost)
     {
         // Perform safety checks.
         Debug.Assert(name.Trim() != string.Empty);

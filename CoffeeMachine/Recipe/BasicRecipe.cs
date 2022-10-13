@@ -65,7 +65,7 @@ internal class BasicRecipe : IRecipe
     /// </summary>
     /// <param name="name">The recipe name. The name must not empty or just blank.</param>
     /// <param name="ingredients">The list of ingredients. There must be at least one ingredient.</param>
-    public BasicRecipe(string name, IReadOnlyCollection<Dose> ingredients)
+    protected BasicRecipe(string name, IReadOnlyCollection<Dose> ingredients)
     {
         // Perform safety checks.
         Debug.Assert(name.Trim() != string.Empty);

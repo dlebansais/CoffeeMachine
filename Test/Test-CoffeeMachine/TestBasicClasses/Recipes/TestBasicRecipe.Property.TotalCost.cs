@@ -12,14 +12,8 @@ internal partial class TestBasicRecipe
     [Test]
     public void TestPropertyTotalCosts()
     {
-        List<Dose> TestIngredients = new List<Dose>()
-        {
-            new Dose(new BasicIngredient("No name", 0.1)),
-            new Dose(new BasicIngredient("No name", 0.2)),
-            new Dose(new BasicIngredient("No name", 0.3)),
-        };
-
-        IRecipe TestRecipe = new BasicRecipe("No name", TestIngredients);
+        IRecipe TestRecipe = BasicRecipe.Expresso;
+        IReadOnlyList<Dose> TestIngredients = TestRecipe.Ingredients;
         double TotalCost = TestRecipe.TotalCost;
 
         Assert.That(TotalCost, Is.Not.NaN);
