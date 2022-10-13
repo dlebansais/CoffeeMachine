@@ -25,6 +25,14 @@ internal class BasicRecipe : IRecipe
         // Make a new copy of ingredients to keep it constant even if the caller changes the source list afterwards.
         List<Dose> IngredientListCopy = new(ingredients);
         Ingredients = IngredientListCopy.AsReadOnly();
+
+        TotalCost = 0;
+        foreach (Dose Item in Ingredients)
+            TotalCost += Item.Ingredient.Cost * Item.Quantity;
+
+        // All ingredients have a definite positive cost, and the sum of numbers all zero or greater is always zero or greater.
+        Debug.Assert(!double.IsNaN(TotalCost));
+        Debug.Assert(TotalCost >= 0);
     }
     #endregion
 
