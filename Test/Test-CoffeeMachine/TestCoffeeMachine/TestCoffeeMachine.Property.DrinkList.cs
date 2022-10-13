@@ -12,10 +12,10 @@ internal partial class TestCoffeeMachine
         BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
 
         Assert.That(CoffeeMachine.DrinkList.Count, Is.EqualTo(5));
-        Assert.That(CoffeeMachine.DrinkList[0].Recipe, Is.EqualTo(BasicRecipe.Expresso));
-        Assert.That(CoffeeMachine.DrinkList[1].Recipe, Is.EqualTo(BasicRecipe.LongCoffee));
-        Assert.That(CoffeeMachine.DrinkList[2].Recipe, Is.EqualTo(BasicRecipe.Cappucino));
-        Assert.That(CoffeeMachine.DrinkList[3].Recipe, Is.EqualTo(BasicRecipe.Chocolate));
-        Assert.That(CoffeeMachine.DrinkList[4].Recipe, Is.EqualTo(BasicRecipe.Tea));
+        Assert.That(CoffeeMachine.DrinkList[0].Recipe, Is.EqualTo(WellKnownRecipe.Expresso));
+        Assert.That(CoffeeMachine.DrinkList[1].Recipe, Is.EqualTo(WellKnownRecipe.LongCoffee));
+        Assert.That(CoffeeMachine.DrinkList[2].Recipe, Is.EqualTo(WellKnownRecipe.Cappucino));
+        Assert.That(CoffeeMachine.DrinkList[3].Recipe, Is.EqualTo(WellKnownRecipe.Chocolate));
+        Assert.That(CoffeeMachine.DrinkList[4].Recipe, Is.EqualTo(WellKnownRecipe.Tea));
     }
 }

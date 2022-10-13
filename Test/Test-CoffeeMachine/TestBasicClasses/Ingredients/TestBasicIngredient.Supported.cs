@@ -9,7 +9,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestCoffeeIsSupported()
     {
-        IIngredient Coffee = BasicIngredient.Coffee;
+        IIngredient Coffee = WellKnownIngredient.Coffee;
         Assert.That(Coffee.Name, Is.EqualTo("Café"));
         Assert.That(Coffee.Cost, Is.EqualTo(1.0));
     }
@@ -17,7 +17,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestSugarIsSupported()
     {
-        IIngredient Sugar = BasicIngredient.Sugar;
+        IIngredient Sugar = WellKnownIngredient.Sugar;
         Assert.That(Sugar.Name, Is.EqualTo("Sucre"));
         Assert.That(Sugar.Cost, Is.EqualTo(0.1));
     }
@@ -25,7 +25,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestCreamIsSupported()
     {
-        IIngredient Cream = BasicIngredient.Cream;
+        IIngredient Cream = WellKnownIngredient.Cream;
         Assert.That(Cream.Name, Is.EqualTo("Crème"));
         Assert.That(Cream.Cost, Is.EqualTo(0.5));
     }
@@ -33,7 +33,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestTeaIsSupported()
     {
-        IIngredient Tea = BasicIngredient.Tea;
+        IIngredient Tea = WellKnownIngredient.Tea;
         Assert.That(Tea.Name, Is.EqualTo("Thé"));
         Assert.That(Tea.Cost, Is.EqualTo(2.0));
     }
@@ -41,7 +41,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestWaterIsSupported()
     {
-        IIngredient Water = BasicIngredient.Water;
+        IIngredient Water = WellKnownIngredient.Water;
         Assert.That(Water.Name, Is.EqualTo("Eau"));
         Assert.That(Water.Cost, Is.EqualTo(0.2));
     }
@@ -49,7 +49,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestChocolateIsSupported()
     {
-        IIngredient Chocolate = BasicIngredient.Chocolate;
+        IIngredient Chocolate = WellKnownIngredient.Chocolate;
         Assert.That(Chocolate.Name, Is.EqualTo("Chocolat"));
         Assert.That(Chocolate.Cost, Is.EqualTo(1.0));
     }
@@ -57,7 +57,7 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestMilkIsSupported()
     {
-        IIngredient Milk = BasicIngredient.Milk;
+        IIngredient Milk = WellKnownIngredient.Milk;
         Assert.That(Milk.Name, Is.EqualTo("Lait"));
         Assert.That(Milk.Cost, Is.EqualTo(0.4));
     }

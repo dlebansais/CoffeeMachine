@@ -35,11 +35,11 @@ public class BasicCoffeeMachine : ICoffeeMachine
     {
         List<SelectableDrink> DefaultRecipeList = new()
         {
-            new SelectableDrink(BasicRecipe.Expresso, CostMultiplier),
-            new SelectableDrink(BasicRecipe.LongCoffee, CostMultiplier),
-            new SelectableDrink(BasicRecipe.Cappucino, CostMultiplier),
-            new SelectableDrink(BasicRecipe.Chocolate, CostMultiplier),
-            new SelectableDrink(BasicRecipe.Tea, CostMultiplier),
+            new SelectableDrink(WellKnownRecipe.Expresso, CostMultiplier),
+            new SelectableDrink(WellKnownRecipe.LongCoffee, CostMultiplier),
+            new SelectableDrink(WellKnownRecipe.Cappucino, CostMultiplier),
+            new SelectableDrink(WellKnownRecipe.Chocolate, CostMultiplier),
+            new SelectableDrink(WellKnownRecipe.Tea, CostMultiplier),
         };
 
         // Add default recipes.

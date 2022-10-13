@@ -10,7 +10,7 @@ internal partial class TestSelectableDrink
     [Test]
     public void TestCreateNewInstance()
     {
-        IRecipe TestRecipe = BasicRecipe.Expresso;
+        IRecipe TestRecipe = WellKnownRecipe.Expresso;
         double TestCostMultiplier = 2.0;
         SelectableDrink NewInstance = new SelectableDrink(TestRecipe, TestCostMultiplier);
         double ExpectedPrice = TestRecipe.TotalCost * TestCostMultiplier;
@@ -31,7 +31,7 @@ internal partial class TestSelectableDrink
     [Test]
     public void TestCreateNewInstanceWithInvalidMultiplier()
     {
-        IRecipe TestRecipe = BasicRecipe.Expresso;
+        IRecipe TestRecipe = WellKnownRecipe.Expresso;
         double TestCostMultiplier = double.NaN;
 
         Assert.Throws<ArgumentException>(() => new SelectableDrink(TestRecipe, TestCostMultiplier));
@@ -48,7 +48,7 @@ internal partial class TestSelectableDrink
             double.NegativeInfinity,
         };
 
-        IRecipe TestRecipe = BasicRecipe.Expresso;
+        IRecipe TestRecipe = WellKnownRecipe.Expresso;
 
         foreach (double Item in CostMultipliers)
         {

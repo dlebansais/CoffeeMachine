@@ -10,8 +10,8 @@ internal partial class TestBasicRecipe
     [Test]
     public void TestPropertyIngredients()
     {
-        IRecipe TestRecipe = BasicRecipe.Expresso;
-        IReadOnlyList<Dose> Ingredients = TestRecipe.Ingredients;
+        IRecipe Expresso = WellKnownRecipe.Expresso;
+        IReadOnlyList<Dose> Ingredients = Expresso.Ingredients;
 
         Assert.That(Ingredients.Count, Is.GreaterThanOrEqualTo(1));
     }

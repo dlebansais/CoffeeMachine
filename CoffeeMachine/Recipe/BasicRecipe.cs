@@ -8,68 +8,17 @@ using System.Diagnostics;
 /// </summary>
 internal class BasicRecipe : IRecipe
 {
-    #region Default Recipes
-    /// <summary>
-    /// Gets the default Expresso recipe.
-    /// </summary>
-    internal static BasicRecipe Expresso { get; } = new("Expresso", new List<Dose>()
-    {
-        new Dose(BasicIngredient.Coffee),
-        new Dose(BasicIngredient.Water),
-    });
-
-    /// <summary>
-    /// Gets the default long coffee recipe.
-    /// </summary>
-    internal static BasicRecipe LongCoffee { get; } = new("Allongé", new List<Dose>()
-    {
-        new Dose(BasicIngredient.Coffee),
-        new Dose(BasicIngredient.Water, 2),
-    });
-
-    /// <summary>
-    /// Gets the default cappucino recipe.
-    /// </summary>
-    internal static BasicRecipe Cappucino { get; } = new("Cappucino", new List<Dose>()
-    {
-        new Dose(BasicIngredient.Coffee),
-        new Dose(BasicIngredient.Chocolate),
-        new Dose(BasicIngredient.Water),
-        new Dose(BasicIngredient.Cream),
-    });
-
-    /// <summary>
-    /// Gets the default chocolate recipe.
-    /// </summary>
-    internal static BasicRecipe Chocolate { get; } = new("Chocolat", new List<Dose>()
-    {
-        new Dose(BasicIngredient.Chocolate, 3),
-        new Dose(BasicIngredient.Milk, 2),
-        new Dose(BasicIngredient.Water),
-        new Dose(BasicIngredient.Sugar),
-    });
-
-    /// <summary>
-    /// Gets the default tea recipe.
-    /// </summary>
-    internal static BasicRecipe Tea { get; } = new("Thé", new List<Dose>()
-    {
-        new Dose(BasicIngredient.Tea),
-        new Dose(BasicIngredient.Water, 2),
-    });
-    #endregion
-
     #region Init
     /// <summary>
     /// Initializes a new instance of the <see cref="BasicRecipe"/> class.
     /// </summary>
     /// <param name="name">The recipe name. The name must not empty or just blank.</param>
     /// <param name="ingredients">The list of ingredients. There must be at least one ingredient.</param>
-    protected BasicRecipe(string name, IReadOnlyCollection<Dose> ingredients)
+    internal BasicRecipe(string name, IReadOnlyCollection<Dose> ingredients)
     {
         // Perform safety checks.
         Debug.Assert(name.Trim() != string.Empty);
-        Debug.Assert(ingredients.Count > 0);
+        Debug.Assert(ingredients.Count >= 1);
 
         Name = name;
 

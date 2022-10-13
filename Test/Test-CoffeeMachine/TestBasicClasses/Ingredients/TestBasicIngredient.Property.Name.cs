@@ -9,8 +9,8 @@ internal partial class TestBasicIngredient
     [Test]
     public void TestPropertyName()
     {
-        IIngredient TestIngredient = BasicIngredient.Coffee;
-        string Name = TestIngredient.Name;
+        IIngredient Coffee = WellKnownIngredient.Coffee;
+        string Name = Coffee.Name;
 
         Assert.That(Name, Is.Not.EqualTo(string.Empty));
     }

@@ -2,7 +2,6 @@
 
 using CoffeeMachine;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 [TestFixture]
 internal partial class TestBasicRecipe
@@ -10,8 +9,8 @@ internal partial class TestBasicRecipe
     [Test]
     public void TestPropertyName()
     {
-        IRecipe TestRecipe = BasicRecipe.Expresso;
-        string Name = TestRecipe.Name;
+        IRecipe Expresso = WellKnownRecipe.Expresso;
+        string Name = Expresso.Name;
 
         Assert.That(Name, Is.Not.EqualTo(string.Empty));
     }

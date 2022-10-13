@@ -9,7 +9,7 @@ internal partial class TestBasicDrink
     [Test]
     public void TestCreateNewInstance()
     {
-        IRecipe TestRecipe = BasicRecipe.Expresso;
+        IRecipe TestRecipe = WellKnownRecipe.Expresso;
         BasicDrink NewInstance = BasicDrink.Create(TestRecipe);
 
         Assert.That(NewInstance.Recipe, Is.EqualTo(TestRecipe));
