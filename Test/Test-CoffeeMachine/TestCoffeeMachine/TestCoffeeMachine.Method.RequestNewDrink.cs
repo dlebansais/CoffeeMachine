@@ -19,7 +19,7 @@ internal partial class TestCoffeeMachine
         {
             CoffeeMachine.RequestNewDrink(i);
 
-            Assert.That(CoffeeMachine.LastSelection, Is.EqualTo(i));
+            Assert.That(CoffeeMachine.LastSelection, Is.EqualTo((Selection)i));
             Assert.That(CoffeeMachine.HasDrink, Is.True);
             Assert.That(CoffeeMachine.LastDrink, Is.Not.Null);
             Assert.That(CoffeeMachine.LastDrink.Recipe, Is.EqualTo(DrinkList[i].Recipe));

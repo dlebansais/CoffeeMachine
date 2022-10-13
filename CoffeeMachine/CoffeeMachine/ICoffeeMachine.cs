@@ -11,7 +11,7 @@ public interface ICoffeeMachine
     /// <summary>
     /// The invalid value for a selection.
     /// </summary>
-    public const int InvalidSelection = -1;
+    public static Selection InvalidSelection = -1;
 
     /// <summary>
     /// Gets the list of available drinks.
@@ -21,7 +21,7 @@ public interface ICoffeeMachine
     /// <summary>
     /// Gets the last selection, <see cref="InvalidSelection"/> if no drink has been distributed yet.
     /// </summary>
-    int LastSelection { get; }
+    Selection LastSelection { get; }
 
     /// <summary>
     /// Gets the last drink, null if not drink has been distributed yet.
@@ -39,7 +39,7 @@ public interface ICoffeeMachine
     /// <param name="selectedRecipe">The selected drink. Must be greater than or equal to zero, and less than the number of available recipes.</param>
     /// <exception cref="ArgumentException">The selected drink is not greater than or equal to zero and less than the number of available recipes.</exception>
     /// <exception cref="CoffeeMachineException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
-    void RequestNewDrink(int selectedRecipe);
+    void RequestNewDrink(Selection selectedRecipe);
 
     /// <summary>
     /// Withdraw the last distributed drink. This will reset <see cref="LastDrink"/>.

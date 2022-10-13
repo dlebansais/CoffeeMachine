@@ -77,7 +77,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <summary>
     /// Gets the last selection, -1 if no drink has been distributed yet.
     /// </summary>
-    public int LastSelection { get; private set; }
+    public Selection LastSelection { get; private set; }
 
     /// <summary>
     /// Gets the last drink, null if not drink has been distributed yet.
@@ -97,7 +97,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <param name="selectedRecipe">The selected recipe. Must be greater than or equal to zero, and less than the number of available recipes.</param>
     /// <exception cref="ArgumentException">The selected recipe is not greater than or equal to zero and less than the number of available recipes.</exception>
     /// <exception cref="CoffeeMachineException">There is a drink to withdraw. Use <see cref="WithdrawLastDrink"/> and try again.</exception>
-    public void RequestNewDrink(int selectedRecipe)
+    public void RequestNewDrink(Selection selectedRecipe)
     {
         if (HasDrink)
             throw new CoffeeMachineException("There is a drink to withdraw. Use the WithdrawLastDrink() method and try again.");
@@ -125,7 +125,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <param name="selectedRecipe">The selected recipe.</param>
     /// <returns>The value of <paramref name="selectedRecipe"/> if valid; otherwise, throws an exception.</returns>
     /// <exception cref="ArgumentException">The selected recipe is not greater than or equal to zero and less than the number of available recipes.</exception>
-    protected virtual int ValidatedSelection(int selectedRecipe)
+    protected virtual Selection ValidatedSelection(Selection selectedRecipe)
     {
         return IsSelectionValid(selectedRecipe) ? selectedRecipe : throw new ArgumentException("The selected recipe is not greater than or equal to zero and less than the number of available recipes.", nameof(selectedRecipe));
     }
@@ -135,7 +135,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// </summary>
     /// <param name="selectedRecipe">The selected recipe.</param>
     /// <returns>True if valid; otherwise, false.</returns>
-    protected virtual bool IsSelectionValid(int selectedRecipe)
+    protected virtual bool IsSelectionValid(Selection selectedRecipe)
     {
         return selectedRecipe >= 0 && selectedRecipe < DrinkList.Count;
     }
@@ -144,9 +144,9 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// Applies the new drink selection.
     /// </summary>
     /// <param name="selectedRecipe">The newly selected recipe for the drink.</param>
-    protected virtual void AppliesNewSelection(int selectedRecipe)
+    protected virtual void AppliesNewSelection(Selection selectedRecipe)
     {
-        int ValidInputSelection = ValidatedSelection(selectedRecipe);
+        Selection ValidInputSelection = ValidatedSelection(selectedRecipe);
 
         SetNewSelection(ValidInputSelection);
         SetLastDrink();
@@ -156,7 +156,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// Set the new drink selection.
     /// </summary>
     /// <param name="selectedRecipe">The newly selected recipe for the drink.</param>
-    protected virtual void SetNewSelection(int selectedRecipe)
+    protected virtual void SetNewSelection(Selection selectedRecipe)
     {
         Debug.Assert(IsSelectionValid(selectedRecipe));
 
@@ -180,8 +180,8 @@ public class BasicCoffeeMachine : ICoffeeMachine
     {
         Debug.Assert(IsSelectionValid(LastSelection));
 
-        SelectableDrink Selection = DrinkList[LastSelection];
-        BasicDrink NewDrink = BasicDrink.Create(Selection.Recipe);
+        SelectableDrink DrinkSelection = DrinkList[LastSelection];
+        BasicDrink NewDrink = BasicDrink.Create(DrinkSelection.Recipe);
 
         return NewDrink;
     }
