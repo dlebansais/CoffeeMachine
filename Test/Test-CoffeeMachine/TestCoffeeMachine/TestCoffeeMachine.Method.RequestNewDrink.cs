@@ -52,6 +52,6 @@ internal partial class TestCoffeeMachine
 
         CoffeeMachine.RequestNewDrink(0);
 
-        Assert.Throws<InvalidOperationException>(() => CoffeeMachine.RequestNewDrink(0));
+        Assert.Throws<CoffeeMachineException>(() => CoffeeMachine.RequestNewDrink(0));
     }
 }

@@ -38,11 +38,12 @@ public interface ICoffeeMachine
     /// </summary>
     /// <param name="selectedRecipe">The selected drink. Must be greater than or equal to zero, and less than the number of available recipes.</param>
     /// <exception cref="ArgumentException">The selected drink is not greater than or equal to zero and less than the number of available recipes.</exception>
+    /// <exception cref="CoffeeMachineException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
     void RequestNewDrink(int selectedRecipe);
 
     /// <summary>
     /// Withdraw the last distributed drink. This will reset <see cref="LastDrink"/>.
     /// </summary>
-    /// <exception cref="InvalidOperationException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
+    /// <exception cref="CoffeeMachineException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
     void WithdrawLastDrink();
 }

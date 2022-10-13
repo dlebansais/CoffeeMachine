@@ -31,7 +31,7 @@ internal partial class TestCoffeeMachine
     {
         BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
 
-        Assert.Throws<InvalidOperationException>(() => CoffeeMachine.WithdrawLastDrink());
+        Assert.Throws<CoffeeMachineException>(() => CoffeeMachine.WithdrawLastDrink());
     }
 
     [Test]
@@ -42,6 +42,6 @@ internal partial class TestCoffeeMachine
         CoffeeMachine.RequestNewDrink(0);
         CoffeeMachine.WithdrawLastDrink();
 
-        Assert.Throws<InvalidOperationException>(() => CoffeeMachine.WithdrawLastDrink());
+        Assert.Throws<CoffeeMachineException>(() => CoffeeMachine.WithdrawLastDrink());
     }
 }

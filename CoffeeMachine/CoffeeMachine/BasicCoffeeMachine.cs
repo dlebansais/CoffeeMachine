@@ -96,11 +96,11 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// </summary>
     /// <param name="selectedRecipe">The selected recipe. Must be greater than or equal to zero, and less than the number of available recipes.</param>
     /// <exception cref="ArgumentException">The selected recipe is not greater than or equal to zero and less than the number of available recipes.</exception>
-    /// <exception cref="InvalidOperationException">There is a drink to withdraw. Use <see cref="WithdrawLastDrink"/> and try again.</exception>
+    /// <exception cref="CoffeeMachineException">There is a drink to withdraw. Use <see cref="WithdrawLastDrink"/> and try again.</exception>
     public void RequestNewDrink(int selectedRecipe)
     {
         if (HasDrink)
-            throw new InvalidOperationException("There is a drink to withdraw. Use the WithdrawLastDrink() method and try again.");
+            throw new CoffeeMachineException("There is a drink to withdraw. Use the WithdrawLastDrink() method and try again.");
 
         AppliesNewSelection(selectedRecipe);
     }
@@ -108,11 +108,11 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <summary>
     /// Withdraws the last distributed drink. This will reset <see cref="LastSelection"/> and <see cref="LastDrink"/>.
     /// </summary>
-    /// <exception cref="InvalidOperationException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
+    /// <exception cref="CoffeeMachineException">There is no drink to withdraw. Use <see cref="HasDrink"/> to detect if there is one before calling this method.</exception>
     public void WithdrawLastDrink()
     {
         if (!HasDrink)
-            throw new InvalidOperationException("There is no drink to withdraw. Use the HasDrink property to detect if there is one before calling this method.");
+            throw new CoffeeMachineException("There is no drink to withdraw. Use the HasDrink property to detect if there is one before calling this method.");
 
         ClearLastSelectionAndLastDrink();
     }
