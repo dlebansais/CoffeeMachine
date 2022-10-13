@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>10.0</LangVersion>
+    <Platforms>x64</Platforms>
+    <Authors>David Le Bansais</Authors>
+    <Version>0.0.1</Version>
+    <NeutralLanguage>en-US</NeutralLanguage>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>CoffeeMachine</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CoffeeMachine\CoffeeMachine.csproj" />
+  </ItemGroup>
+
+</Project>

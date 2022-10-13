@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoffeeMachine", "CoffeeMach
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test-CoffeeMachine", "Test\Test-CoffeeMachine\Test-CoffeeMachine.csproj", "{3C09CF3E-DD52-47F2-897E-EF3C822FFE81}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo-CoffeeMachine", "Demo\Demo-CoffeeMachine\Demo-CoffeeMachine.csproj", "{B6C039D5-858A-499B-B97E-28E677D74218}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{3C09CF3E-DD52-47F2-897E-EF3C822FFE81}.Debug|x64.Build.0 = Debug|x64
 		{3C09CF3E-DD52-47F2-897E-EF3C822FFE81}.Release|x64.ActiveCfg = Release|x64
 		{3C09CF3E-DD52-47F2-897E-EF3C822FFE81}.Release|x64.Build.0 = Release|x64
+		{B6C039D5-858A-499B-B97E-28E677D74218}.Debug|x64.ActiveCfg = Debug|x64
+		{B6C039D5-858A-499B-B97E-28E677D74218}.Debug|x64.Build.0 = Debug|x64
+		{B6C039D5-858A-499B-B97E-28E677D74218}.Release|x64.ActiveCfg = Release|x64
+		{B6C039D5-858A-499B-B97E-28E677D74218}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
