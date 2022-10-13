@@ -13,9 +13,9 @@ internal partial class TestCoffeeMachine
     {
         BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
 
-        IReadOnlyList<IRecipe> RecipeList = CoffeeMachine.RecipeList;
+        IReadOnlyList<SelectableDrink> DrinkList = CoffeeMachine.DrinkList;
 
-        for (int i = 0; i < RecipeList.Count; i++)
+        for (int i = 0; i < DrinkList.Count; i++)
         {
             CoffeeMachine.RequestNewDrink(i);
             CoffeeMachine.WithdrawLastDrink();

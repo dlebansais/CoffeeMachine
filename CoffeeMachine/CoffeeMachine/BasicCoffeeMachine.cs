@@ -25,34 +25,39 @@ public class BasicCoffeeMachine : ICoffeeMachine
     protected BasicCoffeeMachine()
     {
         LastSelection = ICoffeeMachine.InvalidSelection;
-        InternalRecipeList = new();
-        RecipeList = InitializedListOfSupportedRecipes();
+        InternalDrinkList = new();
+        DrinkList = InitializedListOfSupportedRecipes();
     }
 
     // Create the default list of supported recipes.
-    private IReadOnlyList<IRecipe> InitializedListOfSupportedRecipes()
+    private IReadOnlyList<SelectableDrink> InitializedListOfSupportedRecipes()
     {
-        List<IRecipe> DefaultRecipeList = new()
+        List<SelectableDrink> DefaultRecipeList = new()
         {
-            BasicRecipe.Expresso,
-            BasicRecipe.LongCoffee,
-            BasicRecipe.Cappucino,
-            BasicRecipe.Chocolate,
-            BasicRecipe.Tea,
+            new SelectableDrink(BasicRecipe.Expresso, CostMultiplier),
+            new SelectableDrink(BasicRecipe.LongCoffee, CostMultiplier),
+            new SelectableDrink(BasicRecipe.Cappucino, CostMultiplier),
+            new SelectableDrink(BasicRecipe.Chocolate, CostMultiplier),
+            new SelectableDrink(BasicRecipe.Tea, CostMultiplier),
         };
 
         // Add default recipes.
-        InternalRecipeList.AddRange(DefaultRecipeList);
+        InternalDrinkList.AddRange(DefaultRecipeList);
 
-        return InternalRecipeList.AsReadOnly();
+        return InternalDrinkList.AsReadOnly();
     }
     #endregion
 
     #region Properties
     /// <summary>
-    /// Gets the list of available recipes.
+    /// Gets the list of available drinks.
     /// </summary>
-    public IReadOnlyList<IRecipe> RecipeList { get; }
+    public IReadOnlyList<SelectableDrink> DrinkList { get; }
+
+    /// <summary>
+    /// Gets or sets the multiplier to apply to a recipe cost to obtain a price.
+    /// </summary>
+    public double CostMultiplier { get; set; } = 1.3;
 
     /// <summary>
     /// Gets the last selection, -1 if no drink has been distributed yet.
@@ -117,7 +122,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <returns>True if valid; otherwise, false.</returns>
     protected virtual bool IsSelectionValid(int selectedRecipe)
     {
-        return selectedRecipe >= 0 && selectedRecipe < RecipeList.Count;
+        return selectedRecipe >= 0 && selectedRecipe < DrinkList.Count;
     }
 
     /// <summary>
@@ -160,8 +165,8 @@ public class BasicCoffeeMachine : ICoffeeMachine
     {
         Debug.Assert(IsSelectionValid(LastSelection));
 
-        IRecipe SelectedRecipe = RecipeList[LastSelection];
-        BasicDrink NewDrink = BasicDrink.Create(SelectedRecipe);
+        SelectableDrink Selection = DrinkList[LastSelection];
+        BasicDrink NewDrink = BasicDrink.Create(Selection.Recipe);
 
         return NewDrink;
     }
@@ -192,8 +197,8 @@ public class BasicCoffeeMachine : ICoffeeMachine
     }
 
     /// <summary>
-    /// Gets the internal list of recipes. This list can be extended by descendants.
+    /// Gets the internal list of drinks. This list can be extended by descendants.
     /// </summary>
-    protected List<IRecipe> InternalRecipeList { get; }
+    protected List<SelectableDrink> InternalDrinkList { get; }
     #endregion
 }

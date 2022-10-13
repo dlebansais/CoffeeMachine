@@ -13,16 +13,16 @@ internal partial class TestCoffeeMachine
     {
         BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
 
-        IReadOnlyList<IRecipe> RecipeList = CoffeeMachine.RecipeList;
+        IReadOnlyList<SelectableDrink> DrinkList = CoffeeMachine.DrinkList;
 
-        for (int i = 0; i < RecipeList.Count; i++)
+        for (int i = 0; i < DrinkList.Count; i++)
         {
             CoffeeMachine.RequestNewDrink(i);
 
             Assert.That(CoffeeMachine.LastSelection, Is.EqualTo(i));
             Assert.That(CoffeeMachine.HasDrink, Is.True);
             Assert.That(CoffeeMachine.LastDrink, Is.Not.Null);
-            Assert.That(CoffeeMachine.LastDrink.Recipe, Is.EqualTo(RecipeList[i]));
+            Assert.That(CoffeeMachine.LastDrink.Recipe, Is.EqualTo(DrinkList[i].Recipe));
 
             CoffeeMachine.WithdrawLastDrink();
         }
@@ -33,10 +33,10 @@ internal partial class TestCoffeeMachine
     {
         BasicCoffeeMachine CoffeeMachine = BasicCoffeeMachine.Create();
 
-        IReadOnlyList<IRecipe> RecipeList = CoffeeMachine.RecipeList;
+        IReadOnlyList<SelectableDrink> DrinkList = CoffeeMachine.DrinkList;
         int InvalidSelection1 = -1;
         int InvalidSelection2 = int.MinValue;
-        int InvalidSelection3 = RecipeList.Count;
+        int InvalidSelection3 = DrinkList.Count;
         int InvalidSelection4 = int.MaxValue;
 
         Assert.Throws<ArgumentException>(() => CoffeeMachine.RequestNewDrink(InvalidSelection1));

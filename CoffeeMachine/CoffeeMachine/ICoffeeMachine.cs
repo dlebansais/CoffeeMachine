@@ -14,9 +14,9 @@ public interface ICoffeeMachine
     public const int InvalidSelection = -1;
 
     /// <summary>
-    /// Gets the list of available recipes.
+    /// Gets the list of available drinks.
     /// </summary>
-    IReadOnlyList<IRecipe> RecipeList { get; }
+    IReadOnlyList<SelectableDrink> DrinkList { get; }
 
     /// <summary>
     /// Gets the last selection, <see cref="InvalidSelection"/> if no drink has been distributed yet.

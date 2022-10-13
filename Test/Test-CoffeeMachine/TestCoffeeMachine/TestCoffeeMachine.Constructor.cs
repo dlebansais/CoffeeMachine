@@ -15,11 +15,11 @@ internal partial class TestCoffeeMachine
         Assert.That(NewInstance.HasDrink, Is.False);
         Assert.That(NewInstance.LastDrink, Is.Null);
 
-        Assert.That(NewInstance.RecipeList.Count, Is.EqualTo(5));
-        Assert.That(NewInstance.RecipeList[0], Is.EqualTo(BasicRecipe.Expresso));
-        Assert.That(NewInstance.RecipeList[1], Is.EqualTo(BasicRecipe.LongCoffee));
-        Assert.That(NewInstance.RecipeList[2], Is.EqualTo(BasicRecipe.Cappucino));
-        Assert.That(NewInstance.RecipeList[3], Is.EqualTo(BasicRecipe.Chocolate));
-        Assert.That(NewInstance.RecipeList[4], Is.EqualTo(BasicRecipe.Tea));
+        Assert.That(NewInstance.DrinkList.Count, Is.EqualTo(5));
+        Assert.That(NewInstance.DrinkList[0].Recipe, Is.EqualTo(BasicRecipe.Expresso));
+        Assert.That(NewInstance.DrinkList[1].Recipe, Is.EqualTo(BasicRecipe.LongCoffee));
+        Assert.That(NewInstance.DrinkList[2].Recipe, Is.EqualTo(BasicRecipe.Cappucino));
+        Assert.That(NewInstance.DrinkList[3].Recipe, Is.EqualTo(BasicRecipe.Chocolate));
+        Assert.That(NewInstance.DrinkList[4].Recipe, Is.EqualTo(BasicRecipe.Tea));
     }
 }
