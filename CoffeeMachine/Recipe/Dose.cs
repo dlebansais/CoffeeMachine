@@ -1,5 +1,6 @@
 ﻿namespace CoffeeMachine;
 
+using System;
 using System.Diagnostics;
 
 /// <summary>
@@ -23,13 +24,20 @@ public record Dose
     /// </summary>
     /// <param name="ingredient">The ingredient for this dose.</param>
     /// <param name="quantity">The quantity of ingredient in the dose. Must be 1 or greater.</param>
+    /// <exception cref="ArgumentException">The quantity of ingredient in the dose must be 1 or greater.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="ingredient"/> must not be null.</exception>
     public Dose(IIngredient ingredient, int quantity)
     {
-        // Perform safety checks.
-        Debug.Assert(quantity >= 1);
+        if (ingredient is null)
+            throw new ArgumentNullException(nameof(ingredient));
+
+        if (quantity < 1)
+            throw new ArgumentException("The quantity of ingredient in the dose must be 1 or greater.", nameof(quantity));
 
         Ingredient = ingredient;
         Quantity = quantity;
+
+        Debug.Assert(Quantity >= 1);
     }
     #endregion
 
