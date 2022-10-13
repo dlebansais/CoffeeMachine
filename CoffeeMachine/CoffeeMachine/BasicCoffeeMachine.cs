@@ -26,6 +26,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
     {
         LastSelection = ICoffeeMachine.InvalidSelection;
         InternalDrinkList = new();
+        InternalCostMultiplier = 1.3;
         DrinkList = InitializedListOfSupportedRecipes();
     }
 
@@ -57,7 +58,21 @@ public class BasicCoffeeMachine : ICoffeeMachine
     /// <summary>
     /// Gets or sets the multiplier to apply to a recipe cost to obtain a price.
     /// </summary>
-    public double CostMultiplier { get; set; } = 1.3;
+    public double CostMultiplier
+    {
+        get
+        {
+            return InternalCostMultiplier;
+        }
+        set
+        {
+            if (InternalCostMultiplier != value)
+            {
+                InternalCostMultiplier = value;
+                UpdateDrinkPrices();
+            }
+        }
+    }
 
     /// <summary>
     /// Gets the last selection, -1 if no drink has been distributed yet.
@@ -197,8 +212,22 @@ public class BasicCoffeeMachine : ICoffeeMachine
     }
 
     /// <summary>
+    /// Updates drink prices with a new cost multiplier.
+    /// </summary>
+    protected virtual void UpdateDrinkPrices()
+    {
+        foreach (SelectableDrink Item in DrinkList)
+            Item.ChangePrice(CostMultiplier);
+    }
+
+    /// <summary>
     /// Gets the internal list of drinks. This list can be extended by descendants.
     /// </summary>
     protected List<SelectableDrink> InternalDrinkList { get; }
+
+    /// <summary>
+    /// Gets or sets the internal cost multiplier.
+    /// </summary>
+    protected double InternalCostMultiplier { get; set; }
     #endregion
 }
