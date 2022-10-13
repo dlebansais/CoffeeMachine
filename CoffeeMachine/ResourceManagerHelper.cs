@@ -15,6 +15,10 @@ public static class ResourceManagerHelper
     /// <returns>The localized string.</returns>
     public static string ReadString(string id, string cultureInvariantString)
     {
-        return cultureInvariantString;
+        ResourceManager Manager = Properties.Resources.ResourceManager;
+        string ResourceName = $"StringId{id}";
+        string LocalizedString = Manager.GetString(ResourceName) ?? cultureInvariantString;
+
+        return LocalizedString;
     }
 }

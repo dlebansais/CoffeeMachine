@@ -11,7 +11,7 @@ internal class WellKnownRecipe
     /// <summary>
     /// Gets the default Expresso recipe.
     /// </summary>
-    internal static BasicRecipe Expresso { get; } = new("Expresso", new List<Dose>()
+    internal static BasicRecipe Expresso { get; } = new(ResourceManagerHelper.ReadString(nameof(Expresso), "Expresso"), new List<Dose>()
     {
         new Dose(WellKnownIngredient.Coffee),
         new Dose(WellKnownIngredient.Water),
@@ -20,7 +20,7 @@ internal class WellKnownRecipe
     /// <summary>
     /// Gets the default long coffee recipe.
     /// </summary>
-    internal static BasicRecipe LongCoffee { get; } = new("Allongé", new List<Dose>()
+    internal static BasicRecipe LongCoffee { get; } = new(ResourceManagerHelper.ReadString(nameof(LongCoffee), "LongCoffee"), new List<Dose>()
     {
         new Dose(WellKnownIngredient.Coffee),
         new Dose(WellKnownIngredient.Water, 2),
@@ -29,7 +29,7 @@ internal class WellKnownRecipe
     /// <summary>
     /// Gets the default cappucino recipe.
     /// </summary>
-    internal static BasicRecipe Cappucino { get; } = new("Cappucino", new List<Dose>()
+    internal static BasicRecipe Cappucino { get; } = new(ResourceManagerHelper.ReadString(nameof(Cappucino), "Cappucino"), new List<Dose>()
     {
         new Dose(WellKnownIngredient.Coffee),
         new Dose(WellKnownIngredient.Chocolate),
@@ -40,7 +40,7 @@ internal class WellKnownRecipe
     /// <summary>
     /// Gets the default chocolate recipe.
     /// </summary>
-    internal static BasicRecipe Chocolate { get; } = new("Chocolat", new List<Dose>()
+    internal static BasicRecipe Chocolate { get; } = new(ResourceManagerHelper.ReadString(nameof(Chocolate), "Chocolate"), new List<Dose>()
     {
         new Dose(WellKnownIngredient.Chocolate, 3),
         new Dose(WellKnownIngredient.Milk, 2),
@@ -51,7 +51,7 @@ internal class WellKnownRecipe
     /// <summary>
     /// Gets the default tea recipe.
     /// </summary>
-    internal static BasicRecipe Tea { get; } = new("Thé", new List<Dose>()
+    internal static BasicRecipe Tea { get; } = new(ResourceManagerHelper.ReadString(nameof(Tea), "Tea"), new List<Dose>()
     {
         new Dose(WellKnownIngredient.Tea),
         new Dose(WellKnownIngredient.Water, 2),
