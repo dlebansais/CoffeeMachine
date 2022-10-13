@@ -82,8 +82,7 @@ public class BasicCoffeeMachine : ICoffeeMachine
         if (HasDrink)
             throw new InvalidOperationException("There is a drink to withdraw. Use the WithdrawLastDrink() method and try again.");
 
-        LastSelection = ValidatedSelection(selectedRecipe);
-        LastDrink = CreateDrinkFromSelection();
+        AppliesNewSelection(selectedRecipe);
     }
 
     /// <summary>
@@ -122,6 +121,18 @@ public class BasicCoffeeMachine : ICoffeeMachine
     }
 
     /// <summary>
+    /// Applies the new drink selection.
+    /// </summary>
+    /// <param name="selectedRecipe">The newly selected recipe for the drink.</param>
+    protected virtual void AppliesNewSelection(int selectedRecipe)
+    {
+        int ValidInputSelection = ValidatedSelection(selectedRecipe);
+
+        SetNewSelection(ValidInputSelection);
+        SetLastDrink();
+    }
+
+    /// <summary>
     /// Set the new drink selection.
     /// </summary>
     /// <param name="selectedRecipe">The newly selected recipe for the drink.</param>
@@ -130,6 +141,14 @@ public class BasicCoffeeMachine : ICoffeeMachine
         Debug.Assert(IsSelectionValid(selectedRecipe));
 
         LastSelection = selectedRecipe;
+    }
+
+    /// <summary>
+    /// Creates the new drink.
+    /// </summary>
+    protected virtual void SetLastDrink()
+    {
+        LastDrink = CreateDrinkFromSelection();
     }
 
     /// <summary>
