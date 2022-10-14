@@ -1,6 +1,6 @@
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ciok0j05p14mgx3w?svg=true)](https://ci.appveyor.com/project/dlebansais/coffeemachine) 
-[![codecov](https://codecov.io/gh/dlebansais/CoffeeMachine/branch/master/graph/badge.svg?token=ZKVoed9Z0F)](https://codecov.io/gh/dlebansais/CoffeeMachine)
+[![Build status](https://ci.appveyor.com/api/projects/status/yjockkaqt2427x2s?svg=true)](https://ci.appveyor.com/project/dlebansais/coffeemachine) 
+[![codecov](https://codecov.io/gh/dlebansais/CoffeeMachine/branch/master/graph/badge.svg?token=9gSWESCWcD)](https://codecov.io/gh/dlebansais/CoffeeMachine)
 
 # CoffeeMachine
 A sample program for demo purpose.
